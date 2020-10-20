@@ -15,11 +15,14 @@ var Queue = function() {
   //Edge cases
   //None?
   var numberOfItems = 0;
-  someInstance.enqueue = function(value) {
+  var index = -1;
 
+  someInstance.enqueue = function(value) {
+    index = 0;
     for (var key in storage) {
-      if (Number(key + 1) > numberOfItems) {
+      if (Number(key) > index) {
         numberOfItems = Number(key + 1);
+        index = Number(key);
       }
     }
     if (numberOfItems > 0) {
@@ -30,15 +33,21 @@ var Queue = function() {
     }
 
     storage['0'] = value;
-
-    return storage;
+    numberOfItems++;
   };
 
   someInstance.dequeue = function() {
+    var indexToReturn = (numberOfItems - 1).toString();
+    var returnValue = storage[indexToReturn];
+    delete storage[indexToReturn];
+    numberOfItems--;
+    numberOfItems < 0 ? numberOfItems = 0 : numberOfItems;
+    console.log(numberOfItems, index, returnValue);
+    return returnValue;
   };
 
   someInstance.size = function() {
-    return numberOfItems + 1;
+    return numberOfItems;
   };
 
   return someInstance;
