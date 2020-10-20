@@ -6,14 +6,16 @@ var Queue = function() {
 
   // Implement the methods below
 
-  //I-OCE:
-  //Input: a primitive value type
-  //Output: a primitive value type
-  //Constraints:
-  //For enquque: should add a value to the front of the object
-  //For deququq: should return a value from the end of the object
-  //Edge cases
-  //None?
+  //For enqueue:
+  //Get the number of items
+  //Shift everything up one
+  //Add value at index 0
+  //update numberOfItems counter
+
+  //For dequeue:
+  //Using numberOfItems, set index to numberOfItems - 1
+  //Use index to remove the last value from the array, delete it, then return it
+
   var numberOfItems = 0;
   var index = -1;
 
